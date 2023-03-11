@@ -7,6 +7,7 @@ import multer from 'multer';
 import path from 'node:path';
 import { listProductsByCategory } from './app/useCases/categories/listProductsByCategory';
 import { listOrders } from './app/useCases/orders/listOrders';
+import { createOrder } from './app/useCases/orders/createOrder';
 
 export const router = Router();
 
@@ -40,9 +41,7 @@ router.get('/categories/:categoryId/products', listProductsByCategory);
 router.get('/orders', listOrders);
 
 // Create order
-router.post('/orders', (req, res) => {
-  res.send('ok');
-});
+router.post('/orders', createOrder);
 
 // Change order status
 router.patch('/orders/:orderId', (req, res) => {
