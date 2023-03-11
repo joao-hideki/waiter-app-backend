@@ -6,6 +6,7 @@ import { listProducts } from './app/useCases/products/listProducts';
 import multer from 'multer';
 import path from 'node:path';
 import { listProductsByCategory } from './app/useCases/categories/listProductsByCategory';
+import { listOrders } from './app/useCases/orders/listOrders';
 
 export const router = Router();
 
@@ -36,9 +37,7 @@ router.post('/products', upload.single('image'), createProduct);
 router.get('/categories/:categoryId/products', listProductsByCategory);
 
 // List orders
-router.get('/orders', (req, res) => {
-  res.send('ok');
-});
+router.get('/orders', listOrders);
 
 // Create order
 router.post('/orders', (req, res) => {
